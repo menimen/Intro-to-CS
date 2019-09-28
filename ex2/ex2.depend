@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1569648639 source:c:\users\meni\desktop\intro-to-cs\ex2\ex2.c
+	<stdio.h>
+	<ctype.h>
+	"ex2utils.h"
+
+1569647355 c:\users\meni\desktop\intro-to-cs\ex2\ex2utils.h
+
