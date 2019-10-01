@@ -3,6 +3,9 @@
 #define MIN_BASE 2
 #define MAX_T 10*10*10*10*10*10*10
 #define MIN_T 1
+int checkifkesparkynumber (int i);
+int checkhowmanydigitsinnumber(int temp);
+void missionthreekasperkynumber(int p, int q);
 void missiontwocalculatefinalT(long int missiontwo_t, long int *finaltime);
 long int mission1convertnumtobase10(long int num, int base);
 long int mission1converttochosebase(long int num, int base);
@@ -14,6 +17,8 @@ int main() {
     long int mission1num1, mission1num2, sum = 0, temp = 0, mission1num1afterconvert = 0, mission1num2afterconvert = 0;
     //missiontwo variables
     long int missiontwo_t = 0, missiontwo_finalvalue = 0;
+    //missionthree variables
+    int p = 0, q = 0;
     do {
         error_message_trigger = 1;
         printf("please choose what you want to do next: choose between 1-4\n");
@@ -51,6 +56,17 @@ int main() {
                 }
                 break;
             case 3:
+                printf("Please enter the lower limit of the range (p):\n");
+                scanf("%d", &p);
+                printf("Please enter the higher limit of the range (q):\n");
+                scanf("%d", &q);
+                if(p > q) {
+                    printf("ERROR - The range %d to %d isn't valid\n", p, q);
+                    error_message_trigger = 0;
+                }
+                if(error_message_trigger) {
+                    missionthreekasperkynumber(p,q);
+                }
                 break;
             case 4:
                 break;
@@ -101,4 +117,47 @@ void missiontwocalculatefinalT(long int missiontwo_t, long int *finalvalue) {
         }
         i++;
     }
+}
+void missionthreekasperkynumber(int p, int q) {
+    int i = p, k = 0, missiontrigger = 1;
+    while (i <= q) {
+        k = checkifkesparkynumber(i);
+        if (k && missiontrigger) {
+            printf("The numbers between %d and %d are:\n", p, q);
+            missiontrigger = 0;
+        }
+        if (k) {
+            printf("%d\n", i);
+        }
+        i++;
+        }
+    if (missiontrigger) {
+        printf("NO NUMBERS BETWEEN %d AND %d\n", p, q);
+    }
+}
+int checkhowmanydigitsinnumber(int temp) {
+    int i = 0;
+    while (temp > 0) {
+        i++;
+        temp = temp / 10;
+    }
+    return i;
+}
+int checkifkesparkynumber (int i) {
+    int j = 0, r = 0, k = 0, z = 1;
+    if ( i == 0) {
+        return 0;
+    }
+    r = checkhowmanydigitsinnumber(i);
+    k = i * i;
+    while ( k > 0 && r > 0 ) {
+        j = j + (k % 10) * z;
+        z = z * 10;
+        k = k / 10;
+        r--;
+    }
+    if ( k + j == i ) {
+        return 1;
+    }
+    return 0;
 }
