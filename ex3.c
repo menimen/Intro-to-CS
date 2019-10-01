@@ -1,14 +1,21 @@
 #include "stdio.h"
 #define MAX_BASE 10
 #define MIN_BASE 2
+#define MAX_T 10*10*10*10*10*10*10
+#define MIN_T 1
+void missiontwocalculatefinalT(long int missiontwo_t, long int *finaltime);
 long int mission1convertnumtobase10(long int num, int base);
 long int mission1converttochosebase(long int num, int base);
-int main()
-{
-    int i, trigger = 1, mission1base;
+int main() {
+    //ex3 general variables
+    int loop_trigger = 0, error_message_trigger = 1;
+    //mission1 variables
+    int i, mission1base;
     long int mission1num1, mission1num2, sum = 0, temp = 0, mission1num1afterconvert = 0, mission1num2afterconvert = 0;
+    //missiontwo variables
+    long int missiontwo_t = 0, missiontwo_finalvalue = 0;
     do {
-            trigger = 1;
+        error_message_trigger = 1;
         printf("please choose what you want to do next: choose between 1-4\n");
         scanf("%d", &i);
         switch(i) {
@@ -17,8 +24,9 @@ int main()
                 scanf("%d", &mission1base);
                 if(mission1base < MIN_BASE || mission1base > MAX_BASE) {
                     printf("The base %d is not between %d and %d\n", mission1base, MIN_BASE, MAX_BASE);
+                    error_message_trigger = 0;
                 }
-                if(trigger) {
+                if(error_message_trigger) {
                     printf("Please enter the first number in base %d:", mission1base);
                     scanf("%ld", &mission1num1);
                     printf("Please enter the second number in base %d:", mission1base);
@@ -29,16 +37,28 @@ int main()
                     temp = mission1converttochosebase(sum, mission1base);
                     printf("The result of %ld + %ld in base %d is %ld \n", mission1num1, mission1num2, mission1base, temp);
                 }
-                trigger = 0;
                 break;
             case 2:
+                printf("Please enter the time:\n");
+                scanf("%ld", &missiontwo_t);
+                if(missiontwo_t > MAX_T || missiontwo_t < MIN_T) {
+                    printf("ERROR - The time %ld is invalid\n", missiontwo_t);
+                    error_message_trigger = 0;
+                }
+                if(error_message_trigger) {
+                        missiontwocalculatefinalT(missiontwo_t, &missiontwo_finalvalue);
+                        printf("The time in the timer after %ld seconds is %ld \n",missiontwo_t, missiontwo_finalvalue);
+                }
+                break;
             case 3:
+                break;
             case 4:
+                break;
             default :
                 printf("you chose invalid option. program exiting\n");
-
+                loop_trigger = 1;
         }
-    }while (trigger == 0);
+    }while (loop_trigger == 0);
 }
 long int mission1convertnumtobase10(long int num, int base) {
     int numbase = base, j =0;
@@ -68,4 +88,17 @@ long int mission1converttochosebase(long int num, int base) {
         i = i * 10;
     }
     return sum;
+}
+void missiontwocalculatefinalT(long int missiontwo_t, long int *finalvalue) {
+    int inital_value = 3, i = 1;
+    *finalvalue = inital_value;
+    while (i <= missiontwo_t ) {
+        if((*finalvalue) == 0) {
+            (*finalvalue) = inital_value * 2;
+        }
+        else {
+            (*finalvalue)--;
+        }
+        i++;
+    }
 }
