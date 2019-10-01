@@ -3,12 +3,16 @@
 #define MIN_BASE 2
 #define MAX_T 10*10*10*10*10*10*10
 #define MIN_T 1
+enum player{Louise, Richard};
+int getclosestpowerof2(int i);
+int checkamountofbits(int i);
 int checkifkesparkynumber (int i);
 int checkhowmanydigitsinnumber(int temp);
 void missionthreekasperkynumber(int p, int q);
 void missiontwocalculatefinalT(long int missiontwo_t, long int *finaltime);
 long int mission1convertnumtobase10(long int num, int base);
 long int mission1converttochosebase(long int num, int base);
+int subtract(int x, int y);
 int main() {
     //ex3 general variables
     int loop_trigger = 0, error_message_trigger = 1;
@@ -19,6 +23,9 @@ int main() {
     long int missiontwo_t = 0, missiontwo_finalvalue = 0;
     //missionthree variables
     int p = 0, q = 0;
+    //missionfour variables
+    int n = 0, closestpowerof2 = 0;
+    enum player m = Louise;
     do {
         error_message_trigger = 1;
         printf("please choose what you want to do next: choose between 1-4\n");
@@ -69,6 +76,35 @@ int main() {
                 }
                 break;
             case 4:
+                printf("Please enter the initial value for the game:\n");
+                m = Louise;
+                scanf("%d", &n);
+                while (n >= 1) {
+                    switch (m) {
+                        case Richard:
+                            printf("Richard : %d\n", n);
+                            break;
+                        case Louise:
+                            printf("Louise : %d\n", n);
+                            break;
+                    }
+                    closestpowerof2 = getclosestpowerof2(n);
+                    if ( n == closestpowerof2) {
+                        n = n >> 1;
+                    }
+                    else {
+                        n = subtract(n, closestpowerof2);
+                    }
+                    m = m ^ 1;
+                }
+                switch (m) {
+                    case Richard :
+                        printf("The winner is: Richard\n");
+                        break;
+                    default :
+                        printf("The winner is: Louise.\n");
+                        break;
+                }
                 break;
             default :
                 printf("you chose invalid option. program exiting\n");
@@ -160,4 +196,24 @@ int checkifkesparkynumber (int i) {
         return 1;
     }
     return 0;
+}
+int subtract(int x, int y) {
+    return x ^ y;
+}
+int checkamountofbits(int i) {
+    int count = 0;
+    while (i > 0) {
+        i = i >> 1;
+        count ++;
+    }
+    return count;
+}
+int getclosestpowerof2(int i) {
+    int mask = 1;
+    int count = checkamountofbits(i);
+    while ( count > 1) {
+        mask = mask << 1;
+        count--;
+    }
+    return mask;
 }
