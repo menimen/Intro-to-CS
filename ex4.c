@@ -31,7 +31,7 @@ int main() {
 	//mission2
 	int num = 0;
 	//mission3
-	long int missiontroundshreeNum = 0, missionthreeNum;
+	long int missiontroundshreeNum = 0;
 	int count = 0;
 	//mission4
 	int Alice = 0, Bob = 0, rounds = 0, alicewin = 0, tie = 0, alicelost = 0, winner = 0;
@@ -68,7 +68,7 @@ int main() {
 			printf("Please enter the number:\n");
 			scanf("%ld", &missiontroundshreeNum);
 			printf("The numbers are :\n");
-			count = XORWizard(&missionthreeNum, 1);
+			count = XORWizard(&missiontroundshreeNum, 1);
 			printf("A total of %d numbers \n", count);
 			break;
 		case 4:
