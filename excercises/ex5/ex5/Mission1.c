@@ -7,7 +7,7 @@
 
 #include "Mission1.h"
 
-void Mission1()
+void mission1()
 {
 	int n, i=0, count = 0,toggle=0;
 	char source[STRING_MAX_LENGTH], target[STRING_MAX_LENGTH];

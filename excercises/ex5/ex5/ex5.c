@@ -6,8 +6,8 @@
 ******************************************/
 
 #include "Mission1.h"
-/*#include "Mission2.h"
-#include "Mission3.h"
+#include "Mission2.h"
+/*#include "Mission3.h"
 #include "Mission4.h"
 #include "Mission5.h"*/
 #include <stdio.h>
@@ -24,9 +24,9 @@ int main()
 		{
 		case 1: mission1();		// Run the appropriate mission
 			break;
-		/*case 2: mission2();		// Run the appropriate mission
+		case 2: mission2();		// Run the appropriate mission
 			break;
-		case 3: mission3();		// Run the appropriate mission
+		/*case 3: mission3();		// Run the appropriate mission
 			break;
 		case 4: mission4();		// Run the appropriate mission
 			break;

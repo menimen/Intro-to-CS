@@ -7,7 +7,7 @@
 
 #ifndef _MISSION1_H_
 #define _MISSION1_H_
-void Mission1();
+void mission1();
 int isSemiSimilar(char target[], char source[]);
 int isValidString(char *str);
 int CharExistinSource(const char* target, char chr);
