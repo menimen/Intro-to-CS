@@ -3,16 +3,16 @@
 *Student ID:XXXX
 *Submit Info:XXXX
 *Exercise name: exXXXX
-******************************************/ 
+******************************************/
 
 #include "Mission1.h"
-#include "Mission2.h"
+/*#include "Mission2.h"
 #include "Mission3.h"
 #include "Mission4.h"
-#include "Mission5.h"
+#include "Mission5.h"*/
 #include <stdio.h>
 
-void main()
+int main()
 {
 	int missionNum;			// The mission number
 	printf("Please enter the mission number:\n");
@@ -24,18 +24,19 @@ void main()
 		{
 		case 1: mission1();		// Run the appropriate mission
 			break;
-		case 2: mission2();		// Run the appropriate mission
+		/*case 2: mission2();		// Run the appropriate mission
 			break;
 		case 3: mission3();		// Run the appropriate mission
 			break;
 		case 4: mission4();		// Run the appropriate mission
 			break;
 		case 5: mission5();		// Run the appropriate mission
-			break;
+			break;*/
 		default: // do nothing
 			break;
 		}
 		printf("Please enter the mission number:\n");
 		scanf("%d", &missionNum);		// Reading the mission number
 	}
+	return 0;
 }
