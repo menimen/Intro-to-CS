@@ -26,6 +26,7 @@ int sweetCookies(int cookies[], int n, int K)
     }
     while (j < limit && cookies[j] < K) {
         cookies[j+1] = SpecialCombineCookie(cookies[j], cookies[j+1]);
+        quickSort(cookies, 0, n-1);
         j++;
         count++;
     }
