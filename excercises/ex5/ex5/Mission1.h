@@ -4,15 +4,15 @@
 *Submit Info:XXXX
 *Exercise name: exXXXX
 ******************************************/
-#include <string.h>
-#include <stdio.h>
-#define STRINGMAXLENGTH 10*10*10*10
-#define STRINGMINLENGTH 1
-#define MAXNUMOFPAIRS 100
-#define MINNUMOFPAIRS 1
 
 #ifndef _MISSION1_H_
 #define _MISSION1_H_
 void mission1();
 int isSemiSimilar(char target[], char source[]);
+int isValidString(char *str);
+int CharExistinSource(const char* target, char chr);
+#define STRING_MAX_LENGTH 10*10*10*10
+#include <string.h>
+#include <stdio.h>
+#define NUMBER_OF_PAIR_LIMIT 100
 #endif
